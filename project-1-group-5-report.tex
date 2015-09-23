@@ -137,6 +137,7 @@ The \emph{fanned} strategy placed players on the edges opposite the home goal co
 The centered and opponent-goal strategies were somewhat inconclusive in our testing, but generally underperformed the home-goal clustering that we ended up choosing.
 
 The most common opponent strategy was some sort of initial sweep from center-field toward their respective goals. After trying several variants of such strategies, we realized that our players were particularly effective when started from our own goal. Opponents generally swept inwards, carrying some but not all balls from somewhere in the center toward their goal, and then spreading back out to collect what they missed. Starting at the goal, we had a head start at fanning out from the offset and hoped to take advantage of center cells that were left from other team's initial sweeps relatively uncontended.
+
 \section{Implementation}
 
 \subsection{Composability}
@@ -162,6 +163,7 @@ As we found through our trials, using a benefit function to determine where a pl
 After only locking the cell that the player is going towards, we also lock a radius around that cell. This allows us to create zones such that only one player clearing a zone.Through experimentation, we found that choosing a radius of max(0,3-P/10) works well. With higher number of players, the smaller the zones should become because there is not enough space to create so many zones. Addditionally, it is more likely that opponents will steal balls from a particular zone before a single player can clear that zone out.
 
 \subsection {Auxiliary Board}
+The benefit function we used to guide the movement of each player required us to be able to quickly accesss the not only the positions of our own teammates and the balls, but also the positions of our opponents. Moreover, each player needed to know the next postion of every other teammate to ensure smooth kicking and minimal wastage of moves. We encapsulated all this information in an auxiliary board that we refreshed at every time-step. This additional board was a 32 \times 32 2D-array of cells. Each of these cells was an instance of a custom class (Cell) that we created to hold information on the number of opponents, number of teammates now, number of teammates in the next turn and number of balls in the corresponding position on the real board. We found that maintaining this auxiliary board with information specific to our team greatly simplified the code we wrote in other parts of our Player and gave every teammate quick access to decision-critical information. 
 
 \section{Results}
 Generally speaking, we had mixed results. Our rank ranged from $1^{st}$ to $7^{th}$ place. Our most common standing was $3^{rd}$ place. We observed that scores followed relative rank, so we chose rank as the proxy for overall performance in the tournaments.
