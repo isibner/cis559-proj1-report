@@ -161,14 +161,27 @@ After only locking the cell that the player is going towards, we also lock a rad
 \subsection {Auxiliary Board}
 
 \section{Results}
-Our results are summarized in the following table.
-
 Generally speaking, we had mixed results. Our rank ranged from $1^{st}$ to $7^{th}$ place. Our most common standing was $3^{rd}$ place. We observed that scores followed relative rank, so we chose rank as the proxy for overall performance in the tournaments.
 
 The overall trend in our performance was that we did better than average given low-to-moderate $k$-values (less than 15), and any $p$-values. This makes sense in terms of our initial placement strategy. With very high values of $k$ (at least 30), our players simply started too close to our goal, and did not take advantage of the potential for long-range kicking. Teams starting in the middle were able to clear balls in a single kick, so that even when our players reached the middle sections quickly, there were few balls left. Contrarily, our players remained competitive with smaller $k$. We think that starting players near the goal led to more effective bucket brigading as described in the initial placement section above. Larger values of $p$ did not have a major impact on performance because more players allowed for a more effective covering of the map while maintaining a bucket brigade path back to the goal. It is possible that parameterizing our intitial placement by $p$ as well as $k$ could have improved our scores, but it may have negatively impacted the bucket brigading, and led to similar results.
 
 Two notable configurations are $P,K=45,1$ and $P,K=30,1$. We placed third and first in these categories, respectively. This was a surprise to us, as we had not optimized for single-player configurations at all. We attribute our success here to the globally-optimal strategy we adopted, so that in slower games with long ranges, our player was able to seek out the most beneficial balls and ball clusters across the entire map. This is in contrast with games with higher $p$, where the board layout changed so rapidly that a global-optimized strategy did not provide much benefit. 
 
+Our results are summarized in the following figures. 
+
+\begin{figure}[h]
+\centering 
+\includegraphics[width=0.8\columnwidth]{ranking-graph} 
+\caption[P on the horizontal vs K on the vertical]{P on the horizontal vs K on the vertical axis. Observe the yellow $3^{rd}$ place band for low $k$}
+\label{fig:gallery2} 
+\end{figure}
+
+\begin{figure}[h]
+\centering 
+\includegraphics[width=0.8\columnwidth]{ranking-table} 
+\caption[Table of rankings per configuration]{Table of rankings per configuration}
+\label{fig:gallery2} 
+\end{figure}
 
 \section{Contributions}
 
@@ -186,6 +199,13 @@ Among teams that placed highly in the tournament, we noticed that their players 
 
 \subsection{Generalized Step Distance}
 This idea stems from our attempts to take advantage of global-scope “hotspots,” or high-density ball clusters that are not near the goal. The existing implementation weights balls close to the home goal particularly high, which is good in the early game, but may not be ideal overall. 
+
+\begin{figure}[h]
+\centering 
+\includegraphics[width=0.8\columnwidth]{hotspot} 
+\caption[Example of non-local hotspot]{Example of non-local hotspot after 145 turns with $P=7$, $K=6$. Note how balls are clustered in top bottom-left corner}
+\label{fig:gallery2} 
+\end{figure}
 
 As we can see in the figure above, certain strategies tend to cluster balls near an opponent goal, where they stay relatively untouched for several cycles. A smarter global-cluster detection would drop the current strategy 
 
