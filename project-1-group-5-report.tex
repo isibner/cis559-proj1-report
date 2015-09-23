@@ -42,9 +42,11 @@ english
 
 \author{\spacedlowsmallcaps{Ian Sibner, Derick Olson, Spriha Baruah, Anthony Hsieh}} % The article author(s) - author affiliations need to be specified in the AUTHOR AFFILIATIONS block
 
-\date{19 September 2015} % An optional date to appear under the author(s)
+\date{22 September 2015} % An optional date to appear under the author(s)
 
 %----------------------------------------------------------------------------------------
+\setlength\parindent{0pt}
+\setlength{\parskip}{1em}
 
 \begin{document}
 
@@ -78,16 +80,34 @@ english
 
 \section{Introduction} % This section will not appear in the table of contents due to the star (\section*)
 
-\lipsum[1] % Dummy text
+Parallel Soccer is a game in which four teams of $P$ (which can vary from 1 to 250) players compete to kick soccer balls into their teams' goal. The goals are arranged in each corner of a 32x32 grid, and the rest of the squares on the board are initialized to contain one ball each, for a total of $1,020$ balls on the board to start off with. To start off with, each team can place each of their $P$ players anywhere on the board; multiple players can potentially occupy the same square. After that, each player (with full knowledge of the board) must choose to either \textit{kick} a ball (in their square) up to $K$ distance away (with $K$ being a constant whose value may vary between one and 45), or \textit{move} up to 1 square in any direction (including diagonals). When a ball is kicked into a team's goal, that team is awarded a point and the ball is removed from play. The game ends when all balls are removed from play, and the team with the most points wins.
+
+\begin{figure}[tb]
+\centering 
+\includegraphics[width=0.8\columnwidth]{initial-position} 
+\caption[initial board]{An initial positioning of the board where $P=7$}
+\label{fig:gallery} 
+\end{figure}
 
 \section{Initial Insights and Observations}
 
-\lipsum[3]
+Immediately, our team observed several key features about the game. 
+
+\begin{enumerate}
+  \item The game is zero-sum. That is, any ball that is scored by our player is denied to all of our opponents, and vice versa.
+  \item Efficiency is not a constraint. Because the game would not progress to the next step until all of our players had calculated their next move, we could take the entire board into account without worrying about the runtime of our solution.
+  \item Strategies may work well for certain combinations of $P$ and $K$ and not others. A smart player would change its strategy depending on what value these constants took on.
+  \item Certain strategies may work particularly well in the early phase of the game, when all the balls are on the board and there are not clusters, while others may work better in the middle phase (where there are fewer balls and more clusters) or in the end game (when there are only a few balls which every team is competing for).
+  \item Efficient strategies (i.e. those which required to fewest moves to kick a ball into the goal) would generally favor kicking over moving, since $K \geq 1$. This naturally leads to a sort of ``bucket brigade'' where players kick balls close to one another in order to ``pass'' them towards the goal.
+\end{enumerate}
+
+These insights guided our strategy throughout and allowed us to focus on the most important aspects of the game.
 
 \section{Strategies and Concepts}
-\subsection {Global scope}
 
-Given the loose efficiency constraints given the problem, we decided that a globally optimal benefit function would be both feasible and desirable. The primary gain from this decision was a team optimized for late gameplay, where our players were able to seek out and steal balls toward the end of the game. The reason was that once we and other teams cleared the balls near our respective goals, balls became scarce. If any team had accumulated balls, even if they were far from our players, they would seek them out and attempt to score with them.
+\subsection {Movement \& Benefit Function}
+
+In order for a player to decide which cell was the best move for any given board state, we created a benefit function that assigned a score to each cell for every given player. Since we had access to the entire board, we used many factors in this function, including the number of balls in a cell (and surrounding cells), distance from the cell to our goal, distance from the cell to the player, and the number of opponents around the cell. Given the loose efficiency constraints given the problem, we decided that a globally optimal benefit function would be both feasible and desirable. The primary gain from this decision was a team optimized for late gameplay, where our players were able to seek out and steal balls toward the end of the game. The reason was that once we and other teams cleared the balls near our respective goals, balls became scarce. If any team had accumulated balls, even if they were far from our players, they would seek them out and attempt to score with them.
 
 On the other hand, as teams improved, the game time grew shorter and quicker. In such a game, it is possible that a globally optimal zone will change into a depleted zone before a far-away team can reach it. It is likely that our model did not fully capture the constantly changing state of the game board. We addressed this by heavily weighting our own goal in benefit calculations.
 
@@ -99,13 +119,15 @@ After initial trials with a large radius, we settled on a radius of 3. We observ
 
 \section{Implementation}
 
+\subsection{Composability}
+Because we realized that certain strategies might work very well in the early phase while others might excel in the late phase, we set about building a player that would \textit{compose} other players by switching between its component players' strategies. We met with a lot of success the first week by composing Group 1's \texttt{GridPlayer} for the first 200 turns and our own mid-game-optimized \texttt{DerickPlayer} for the remainder of the game. This worked about as expected; \texttt{GridPlayer} was far more efficient than \texttt{DerickPlayer} in the early game, but after about 200 turns, the board had grown sparser and our own player was much better at seeking out balls and scoring them. We believed this was the way forward and set about finding a more intelligent way to determine when to switch (factoring in $P$, $K$, and the number of balls left on the board).
 
-Reference to Figure~\vref{fig:gallery}. % The \vref command specifies the location of the reference
+However, during the third week of gameplay, the rest of the teams (and our own \texttt{DerickBrigadePlayer}) had become so sophisticated that the early stage of the game completely dominated. Essentially, the winner was determined by how well the early phase played out, and the middle/end phases were nearly nonexistent. Thus we decided to play a pure strategy in the final round, focused on early-game optimization, rather than continuing to compose multiple strategies.
 
 \begin{figure}[tb]
 \centering 
-\includegraphics[width=0.5\columnwidth]{GalleriaStampe} 
-\caption[An example of a floating figure]{An example of a floating figure (a reproduction from the \emph{Gallery of prints}, M.~Escher,\index{Escher, M.~C.} from \url{http://www.mcescher.com/}).} % The text in the square bracket is the caption for the list of figures while the text in the curly brackets is the figure caption
+\includegraphics[width=0.8\columnwidth]{after150} 
+\caption[after 150 turns]{The state of the board after 150 turns with $P=7$, $K=6$. Note how over 60\% of the balls are already scored; this illustrates the great importance of the early game when sophisticated strategies are placed in competition.}
 \label{fig:gallery} 
 \end{figure}
 
