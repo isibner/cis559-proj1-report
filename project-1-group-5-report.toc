@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {5}Results}{5}{section.5}
 \contentsline {section}{\numberline {6}Contributions}{5}{section.6}
 \contentsline {section}{\numberline {7}Future Directions and Limitations}{6}{section.7}
-\contentsline {subsection}{\numberline {7.1}Generalized Step Distance}{6}{subsection.7.1}
-\contentsline {section}{\numberline {8}Acknowledgments}{6}{section.8}
+\contentsline {subsection}{\numberline {7.1}Strengthen Early Game Through Sweeping}{6}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Generalized Step Distance}{6}{subsection.7.2}
+\contentsline {section}{\numberline {8}Acknowledgments}{7}{section.8}
 \contentsline {section}{\numberline {9}Conclusion}{7}{section.9}
-\contentsline {subsection}{\numberline {9.1}Figure Composed of Subfigures}{7}{subsection.9.1}

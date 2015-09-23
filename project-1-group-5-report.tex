@@ -85,7 +85,7 @@ Parallel Soccer is a game in which four teams of $P$ (which can vary from 1 to 2
 \begin{figure}[tb]
 \centering 
 \includegraphics[width=0.8\columnwidth]{initial-position} 
-\caption[initial board]{An initial positioning of the board where $P=7$}
+\caption[Initial board of a parallel football game]{An initial positioning of the board where $P=7$}
 \label{fig:gallery} 
 \end{figure}
 
@@ -127,7 +127,7 @@ However, during the third week of gameplay, the rest of the teams (and our own \
 \begin{figure}[tb]
 \centering 
 \includegraphics[width=0.8\columnwidth]{after150} 
-\caption[after 150 turns]{The state of the board after 150 turns with $P=7$, $K=6$. Note how over 60\% of the balls are already scored; this illustrates the great importance of the early game when sophisticated strategies are placed in competition.}
+\caption[State of a parallel football board after 150 turns]{The state of the board after 150 turns with $P=7$, $K=6$. Note how over 60\% of the balls are already scored; this illustrates the great importance of the early game when sophisticated strategies are placed in competition.}
 \label{fig:gallery} 
 \end{figure}
 
@@ -140,6 +140,9 @@ However, during the third week of gameplay, the rest of the teams (and our own \
 \lipsum[2]
 
 \section{Future Directions and Limitations}
+
+\subsection{Strengthen Early Game Through Sweeping}
+Among teams that placed highly in the tournament, we noticed that their players would tend to start the game by sweeping balls inwards towards their own goal, maximizing their early-game wins before beginning to spread out across the board. Our players, which started close to our own goal, did not exhibit this behavior. Adapting our placement strategy so that they started farther away might be sufficient to achieve this result; however, we could also look into a composability solution in which a sweeping strategy is used for the very first portion of the game before switching to our current players' behavior. This would require significantly tweaking our composability behavior, particularly the point at which the behavior switch occurred, in order to ensure that our players did not continue sweeping for too long before switching to mid-game behavior.
 
 \subsection{Generalized Step Distance}
 This idea stems from our attempts to take advantage of global-scope “hotspots,” or high-density ball clusters that are not near the goal. The existing implementation weights balls close to the home goal particularly high, which is good in the early game, but may not be ideal overall. 
@@ -164,21 +167,5 @@ Group 6 (Bucket Brigade) contributed a smarter kicking function that favored pas
 \section{Conclusion}
 
 \lipsum[1]
-
-\subsection{Figure Composed of Subfigures}
-
-Reference the figure composed of multiple subfigures as Figure~\vref{fig:esempio}. Reference one of the subfigures as Figure~\vref{fig:ipsum}. % The \vref command specifies the location of the reference
-
-\begin{figure}[tb]
-\centering
-\subfloat[A city market.]{\includegraphics[width=.45\columnwidth]{Lorem}} \quad
-\subfloat[Forest landscape.]{\includegraphics[width=.45\columnwidth]{Ipsum}\label{fig:ipsum}} \\
-\subfloat[Mountain landscape.]{\includegraphics[width=.45\columnwidth]{Dolor}} \quad
-\subfloat[A tile decoration.]{\includegraphics[width=.45\columnwidth]{Sit}}
-\caption[A number of pictures.]{A number of pictures with no common theme.} % The text in the square bracket is the caption for the list of figures while the text in the curly brackets is the figure caption
-\label{fig:esempio}
-\end{figure}
-
-%----------------------------------------------------------------------------------------
 
 \end{document}
