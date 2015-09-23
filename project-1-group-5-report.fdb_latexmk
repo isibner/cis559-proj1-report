@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1442988026 "project-1-group-5-report.tex" "project-1-group-5-report.pdf" "project-1-group-5-report" 1442988028
+["pdflatex"] 1442988308 "project-1-group-5-report.tex" "project-1-group-5-report.pdf" "project-1-group-5-report" 1442988311
   "/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1284331290 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/gettitlestring.sty" 1303254447 8237 52810bdb4db2270e717422560a104aea ""
@@ -88,16 +88,16 @@
   "/usr/local/texlive/2014/texmf-dist/tex/latex/xcolor/xcolor.sty" 1169481954 55224 a43bab84e0ac5e6efcaf9a98bde73a94 ""
   "Figures/after150.png" 1442985815 67336 4191c21eff9ab2d1f1207ead52bc378e ""
   "Figures/initial-position.jpg" 1442983982 102522 57c6fa27aba7270b99d3db528e945085 ""
-  "project-1-group-5-report.aux" 1442988028 3115 970166d842520c8858335e4f5e12d8ab ""
-  "project-1-group-5-report.lof" 1442988028 267 8201d4e18659c4353af374659e7cbb1d ""
-  "project-1-group-5-report.out" 1442988028 1216 3b28be3295dda4c812388469f7c152ad ""
-  "project-1-group-5-report.tex" 1442988022 17020 30b81646b5eb2374d69cd4b4bc1089c6 ""
-  "project-1-group-5-report.toc" 1442988028 1486 6f4a11f222be22e15dbd7b3d3eee30ba ""
+  "project-1-group-5-report.aux" 1442988310 3115 970166d842520c8858335e4f5e12d8ab ""
+  "project-1-group-5-report.lof" 1442988310 267 8201d4e18659c4353af374659e7cbb1d ""
+  "project-1-group-5-report.out" 1442988310 1216 3b28be3295dda4c812388469f7c152ad ""
+  "project-1-group-5-report.tex" 1442988308 17727 6902966e6678cb118f7e69528fffd36c ""
+  "project-1-group-5-report.toc" 1442988310 1486 6f4a11f222be22e15dbd7b3d3eee30ba ""
   "structure.tex" 1442337931 3061 95a594650420119c9f58fd1c52a8f116 ""
   (generated)
+  "project-1-group-5-report.lof"
+  "project-1-group-5-report.log"
+  "project-1-group-5-report.out"
   "project-1-group-5-report.pdf"
   "project-1-group-5-report.aux"
   "project-1-group-5-report.toc"
-  "project-1-group-5-report.log"
-  "project-1-group-5-report.out"
-  "project-1-group-5-report.lof"
