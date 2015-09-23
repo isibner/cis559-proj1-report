@@ -16,4 +16,4 @@
 \contentsline {subsection}{\numberline {7.2}Generalized Step Distance}{7}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}Pathing}{8}{subsection.7.3}
 \contentsline {section}{\numberline {8}Acknowledgments}{8}{section.8}
-\contentsline {section}{\numberline {9}Conclusion}{8}{section.9}
+\contentsline {section}{\numberline {9}Conclusion}{9}{section.9}
