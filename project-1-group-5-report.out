@@ -5,15 +5,17 @@
 \BOOKMARK [2][-]{subsection.3.2}{3.2 Benefit Function}{section.3}% 5
 \BOOKMARK [2][-]{subsection.3.3}{3.3 Cell clustering}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.4}{3.4 Kicking}{section.3}% 7
-\BOOKMARK [1][-]{section.4}{4 Implementation}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{4.1 Composability}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{4.2 Locking Mechanism}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.3}{4.3 Auxiliary Board}{section.4}% 11
-\BOOKMARK [1][-]{section.5}{5 Results}{}% 12
-\BOOKMARK [1][-]{section.6}{6 Contributions}{}% 13
-\BOOKMARK [1][-]{section.7}{7 Future Directions and Limitations}{}% 14
-\BOOKMARK [2][-]{subsection.7.1}{7.1 Strengthen Early Game Through Sweeping}{section.7}% 15
-\BOOKMARK [2][-]{subsection.7.2}{7.2 Generalized Step Distance}{section.7}% 16
-\BOOKMARK [2][-]{subsection.7.3}{7.3 Pathing}{section.7}% 17
-\BOOKMARK [1][-]{section.8}{8 Acknowledgments}{}% 18
-\BOOKMARK [1][-]{section.9}{9 Conclusion}{}% 19
+\BOOKMARK [2][-]{subsection.3.5}{3.5 Placement}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{4 Implementation}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{4.1 Composability}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{4.2 Placement}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{4.3 Locking Mechanism}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.4}{4.4 Auxiliary Board}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{5 Results}{}% 14
+\BOOKMARK [1][-]{section.6}{6 Contributions}{}% 15
+\BOOKMARK [1][-]{section.7}{7 Future Directions and Limitations}{}% 16
+\BOOKMARK [2][-]{subsection.7.1}{7.1 Strengthen Early Game Through Sweeping}{section.7}% 17
+\BOOKMARK [2][-]{subsection.7.2}{7.2 Generalized Step Distance}{section.7}% 18
+\BOOKMARK [2][-]{subsection.7.3}{7.3 Pathing}{section.7}% 19
+\BOOKMARK [1][-]{section.8}{8 Acknowledgments}{}% 20
+\BOOKMARK [1][-]{section.9}{9 Conclusion}{}% 21

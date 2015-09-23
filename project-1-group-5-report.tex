@@ -48,6 +48,8 @@ english
 \setlength\parindent{0pt}
 \setlength{\parskip}{1em}
 
+\usepackage[section]{placeins}
+
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -135,23 +137,21 @@ The most common opponent strategy was some sort of initial sweep from center-fie
 \section{Implementation}
 
 \subsection{Composability}
-Because we realized that certain strategies might work very well in the early phase while others might excel in the late phase, we set about building a player that would \textit{compose} other players by switching between its component players' strategies. We met with a lot of success the first week by composing Group 1's \texttt{GridPlayer} for the first 200 turns and our own mid-game-optimized \texttt{DerickPlayer} for the remainder of the game. This worked about as expected; \texttt{GridPlayer} was far more efficient than \texttt{DerickPlayer} in the early game, but after about 200 turns, the board had grown sparser and our own player was much better at seeking out balls and scoring them. We believed this was the way forward and set about finding a more intelligent way to determine when to switch (factoring in $P$, $K$, and the number of balls left on the board).
+Because we realized that certain strategies might work very well in the early phase while others might excel in the late phase, we set about building a player that would \textit{compose} other players by switching between its component players' strategies. We met with a lot of success the second week by composing Group 1's \texttt{GridPlayer} for the first 200 turns and our own mid-game-optimized \texttt{DerickPlayer} for the remainder of the game. This worked about as expected; \texttt{GridPlayer} was far more efficient than \texttt{DerickPlayer} in the early game, but after about 200 turns, the board had grown sparser and our own player was much better at seeking out balls and scoring them. We believed this was the way forward and set about finding a more intelligent way to determine when to switch (factoring in $P$, $K$, and the number of balls left on the board).
+
+However, during the third week of gameplay, the rest of the teams (and our own \texttt{DerickBrigadePlayer}) had become so sophisticated that the early stage of the game completely dominated. Essentially, the winner was determined by how well the early phase played out, and the middle/end phases were nearly nonexistent. Thus we decided to play a pure strategy in the final round, focused on early-game optimization, rather than continuing to compose multiple strategies.
+
+\begin{figure}[h!]
+\centering 
+\includegraphics[width=0.8\columnwidth]{after150} 
+\caption[State of a parallel football board after 150 turns]{The state of the board after 150 turns with $P=7$, $K=6$. Note how over 60\% of the balls are already scored; this illustrates the great importance of the early game when sophisticated strategies are placed in competition.}
+\label{fig:gallery2} 
+\end{figure}
 
 \subsection{Placement}
 In the early phases, we enumerated the different placement strategies and switched according to values of P and K. Our final implementation was fairly simple, and consisted of a random placement of players near the homegoal, with a bounded parameter on $k$ determining their range.
 
 By starting in a tight cluster bounded by the square from our goal out $MIN(K,10)$ spaces, our players would fan out across the board, while the kicking algorithm led to a trail of $k$-spaced players who formed a bucket brigade. The relatively small square space for player placement was chosen as it balanced the advantages of fanning outward from the goal with scoring an initial $k$-distanced ball for each player.
-
-
-However, during the third week of gameplay, the rest of the teams (and our own \texttt{DerickBrigadePlayer}) had become so sophisticated that the early stage of the game completely dominated. Essentially, the winner was determined by how well the early phase played out, and the middle/end phases were nearly nonexistent. Thus we decided to play a pure strategy in the final round, focused on early-game optimization, rather than continuing to compose multiple strategies.
-
-\begin{figure}[h]
-\centering 
-<<<<<<< HEAD
-\includegraphics[width=0.8\columnwidth]{after150} 
-\caption[State of a parallel football board after 150 turns]{The state of the board after 150 turns with $P=7$, $K=6$. Note how over 60\% of the balls are already scored; this illustrates the great importance of the early game when sophisticated strategies are placed in competition.}
-\label{fig:gallery2} 
-\end{figure}
 
 \subsection{Locking Mechanism}
 As we found through our trials, using a benefit function to determine where a player should go runs into problems when players want to go to the same cell. The players will eventually converge and go to the same cells the rest of the game. To prevent this major inefficency, we implemented a locking mechanism where only one player can go after a single cell at a time. However, we found that although this works great through most of the game, when the number of balls is very small, it becomes better for multiple players to go after the same ball to have a higher likelyhood of kicking the ball to the goal. As such, when the number of balls reaches the number of players on the field, we turn off the locking mechanism.
@@ -169,11 +169,6 @@ The overall trend in our performance was that we did better than average given l
 
 Two notable configurations are $P,K=45,1$ and $P,K=30,1$. We placed third and first in these categories, respectively. This was a surprise to us, as we had not optimized for single-player configurations at all. We attribute our success here to the globally-optimal strategy we adopted, so that in slower games with long ranges, our player was able to seek out the most beneficial balls and ball clusters across the entire map. This is in contrast with games with higher $p$, where the board layout changed so rapidly that a global-optimized strategy did not provide much benefit. 
 
-
-
-
-
-\lipsum[3]
 
 \section{Contributions}
 
